@@ -13,11 +13,12 @@ class UserRouter {
     this.deleteRoutes();
   }
 
-  getRoutes() {
-    this.router.get('/login', UserController.login);
-  }
+  getRoutes() {}
 
-  postRoutes() {}
+  postRoutes() {
+    // POST so credentials live in the body (never on a GET query string / logs)
+    this.router.post('/login', (req, res) => UserController.login(req, res));
+  }
 
   patchRoutes() {}
 

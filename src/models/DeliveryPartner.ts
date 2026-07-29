@@ -1,12 +1,17 @@
+import bcrypt from 'bcrypt';
 import { Document, Schema, model } from 'mongoose';
+
+/**
+ * DESIGN NOTES (DeliveryPartner)
+ * ------------------------------
+ * - Auth matches Customer / RestaurantAdmin so one login controller can branch
+ *   by role without special-casing hash logic.
+ * - Availability / location updates must not re-hash password — isModified guard.
+ */
 
 /** Allowed vehicle values — keep TS and the Mongoose enum in sync. */
 export type VehicleType = 'bike' | 'car' | 'bicycle';
 
-/**
- * DeliveryPartner — rider / driver who fulfills orders.
- * Same auth fields as Customer, plus availability and live location.
- */
 export interface IDeliveryPartner extends Document {
   name: string;
   email: string;
@@ -20,6 +25,7 @@ export interface IDeliveryPartner extends Document {
     lat: number;
     lng: number;
   };
+  comparePassword(candidate: string): Promise<boolean>;
 }
 
 const DeliveryPartnerSchema = new Schema<IDeliveryPartner>(
@@ -52,6 +58,22 @@ const DeliveryPartnerSchema = new Schema<IDeliveryPartner>(
   },
   { timestamps: true } // createdAt / updatedAt managed by Mongoose
 );
+
+/**
+ * Hash on create / password change only.
+ * isModified('password') matters: toggling isAvailable or updating currentLocation
+ * would otherwise bcrypt the existing hash again and break future logins.
+ */
+DeliveryPartnerSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+DeliveryPartnerSchema.methods.comparePassword = async function (
+  candidate: string
+): Promise<boolean> {
+  return bcrypt.compare(candidate, this.password);
+};
 
 export const DeliveryPartner = model<IDeliveryPartner>(
   'DeliveryPartner',

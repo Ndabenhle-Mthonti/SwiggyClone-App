@@ -1,9 +1,15 @@
+import bcrypt from 'bcrypt';
 import { Document, Schema, Types, model } from 'mongoose';
 
 /**
- * RestaurantAdmin — owns / manages a Restaurant.
- * Same auth fields as Customer, plus a restaurant link and approval gate.
+ * DESIGN NOTES (RestaurantAdmin)
+ * ------------------------------
+ * - Same auth surface as Customer (hash hook + comparePassword) so login can
+ *   treat roles uniformly while still using role-specific models/collections.
+ * - restaurantId / isApproved stay business fields; auth must not skip hashing
+ *   when those unrelated fields change (hence isModified on password).
  */
+
 export interface IRestaurantAdmin extends Document {
   name: string;
   email: string;
@@ -13,6 +19,7 @@ export interface IRestaurantAdmin extends Document {
   restaurantId: Types.ObjectId;
   /** Must be true before this admin can take the restaurant live. */
   isApproved: boolean;
+  comparePassword(candidate: string): Promise<boolean>;
 }
 
 const RestaurantAdminSchema = new Schema<IRestaurantAdmin>(
@@ -40,6 +47,22 @@ const RestaurantAdminSchema = new Schema<IRestaurantAdmin>(
   },
   { timestamps: true } // createdAt / updatedAt managed by Mongoose
 );
+
+/**
+ * Hash on create / password change only.
+ * isModified('password') matters: without it, saving isApproved or restaurantId
+ * would re-hash an already-hashed password and lock the user out of login.
+ */
+RestaurantAdminSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+RestaurantAdminSchema.methods.comparePassword = async function (
+  candidate: string
+): Promise<boolean> {
+  return bcrypt.compare(candidate, this.password);
+};
 
 export const RestaurantAdmin = model<IRestaurantAdmin>(
   'RestaurantAdmin',
