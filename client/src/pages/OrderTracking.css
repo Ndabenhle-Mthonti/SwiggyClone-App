@@ -1,0 +1,66 @@
+.order-tracking-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 3rem;
+  background: #f7f3ee;
+  color: #1f1a16;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.order-tracking-header {
+  max-width: 40rem;
+  margin: 0 auto 1.5rem;
+}
+
+.order-tracking-back {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: #d35400;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.order-tracking-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.order-tracking-id {
+  margin: 0.4rem 0 0;
+  color: #6b5e52;
+  word-break: break-all;
+}
+
+.order-tracking-card {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fffdf9;
+  border: 1px solid #e2d7c9;
+}
+
+.order-tracking-label {
+  margin: 0;
+  color: #6b5e52;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.order-tracking-value {
+  margin: 0.5rem 0 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.order-tracking-updated,
+.order-tracking-status {
+  margin: 0.75rem 0 0;
+  color: #6b5e52;
+}
+
+.order-tracking-error {
+  margin: 0 0 0.75rem;
+  color: #9b1c1c;
+}

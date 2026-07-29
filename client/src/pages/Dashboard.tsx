@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Dashboard.css';
 
 /**
  * DESIGN NOTES (Dashboard)
  * ------------------------
- * Intentionally minimal scaffold: prove auth + ProtectedRoute work. Role-specific
- * dashboards (menus, orders, delivery map) come in the next frontend phase.
+ * Customer gets a clear path into /restaurants — role-specific home for admins
+ * and partners still comes later; we only unlock the customer browse flow now.
  */
 export function Dashboard() {
   const { user, logout } = useAuth();
@@ -24,11 +25,23 @@ export function Dashboard() {
       </header>
 
       <section className="dashboard-card">
-        <h2>Coming next</h2>
-        <p>
-          Role-specific dashboards for customers, restaurant admins, and delivery
-          partners will land in a later phase.
-        </p>
+        {user?.role === 'customer' ? (
+          <>
+            <h2>Order food</h2>
+            <p>Browse restaurants, build a cart, and track your order live.</p>
+            <Link className="dashboard-cta" to="/restaurants">
+              Browse restaurants
+            </Link>
+          </>
+        ) : (
+          <>
+            <h2>Coming next</h2>
+            <p>
+              Role-specific dashboards for restaurant admins and delivery partners
+              will land in a later phase.
+            </p>
+          </>
+        )}
       </section>
     </main>
   );
