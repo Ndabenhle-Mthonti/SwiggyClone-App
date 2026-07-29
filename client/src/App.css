@@ -1,0 +1,4 @@
+/* App shell — route pages own their layout CSS. */
+#root {
+  min-height: 100%;
+}

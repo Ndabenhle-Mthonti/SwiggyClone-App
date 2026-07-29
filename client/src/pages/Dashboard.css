@@ -1,0 +1,64 @@
+.dashboard-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 3rem;
+  background: #f7f3ee;
+  color: #1f1a16;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  max-width: 48rem;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.dashboard-eyebrow {
+  margin: 0 0 0.25rem;
+  color: #6b5e52;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-role {
+  margin: 0.35rem 0 0;
+  color: #6b5e52;
+}
+
+.dashboard-logout {
+  padding: 0.65rem 1rem;
+  border: 1px solid #cfc2b2;
+  background: #fffdf9;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dashboard-card {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fffdf9;
+  border: 1px solid #e2d7c9;
+}
+
+.dashboard-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.dashboard-card p {
+  margin: 0;
+  color: #6b5e52;
+  line-height: 1.5;
+}
