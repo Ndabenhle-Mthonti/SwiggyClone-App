@@ -1,0 +1,95 @@
+.create-restaurant-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at top left, #fff4e8 0%, transparent 45%),
+    linear-gradient(160deg, #f7f3ee 0%, #ebe4da 100%);
+  color: #1f1a16;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.create-restaurant-form {
+  width: min(100%, 24rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: #fffdf9;
+  border: 1px solid #e2d7c9;
+}
+
+.create-restaurant-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.create-restaurant-subtitle {
+  margin: 0 0 0.5rem;
+  color: #6b5e52;
+}
+
+.create-restaurant-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.create-restaurant-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.create-restaurant-field input {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #cfc2b2;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+.create-restaurant-field input:focus {
+  outline: 2px solid #d35400;
+  outline-offset: 1px;
+}
+
+.create-restaurant-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-restaurant-checkbox label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.create-restaurant-status {
+  margin: 0;
+  color: #6b5e52;
+}
+
+.create-restaurant-error {
+  margin: 0;
+  color: #9b1c1c;
+  font-size: 0.9rem;
+}
+
+.create-restaurant-submit {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: #d35400;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.create-restaurant-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
