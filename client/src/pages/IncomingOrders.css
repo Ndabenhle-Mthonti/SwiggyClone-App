@@ -1,0 +1,167 @@
+.incoming-orders-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 3rem;
+  background: #f7f3ee;
+  color: #1f1a16;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.incoming-orders-header {
+  max-width: 56rem;
+  margin: 0 auto 1.5rem;
+}
+
+.incoming-orders-eyebrow {
+  margin: 0 0 0.25rem;
+  color: #6b5e52;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.incoming-orders-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.incoming-orders-status,
+.incoming-orders-error {
+  max-width: 56rem;
+  margin: 0 auto 1rem;
+}
+
+.incoming-orders-status {
+  color: #6b5e52;
+}
+
+.incoming-orders-error {
+  color: #9b1c1c;
+}
+
+.incoming-orders-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.incoming-orders-card {
+  padding: 1.25rem;
+  background: #fffdf9;
+  border: 1px solid #e2d7c9;
+  border-left-width: 4px;
+}
+
+.incoming-orders-card-placed {
+  border-left-color: #d35400;
+}
+
+.incoming-orders-card-confirmed {
+  border-left-color: #2e6da4;
+}
+
+.incoming-orders-card-preparing {
+  border-left-color: #7a4e00;
+}
+
+.incoming-orders-card-out-for-delivery {
+  border-left-color: #1a7a6d;
+}
+
+.incoming-orders-card-delivered {
+  border-left-color: #1f6b2e;
+}
+
+.incoming-orders-card-cancelled {
+  border-left-color: #8a2f2f;
+}
+
+.incoming-orders-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.incoming-orders-card-top h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.incoming-orders-badge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.incoming-orders-badge-placed {
+  background: #fde8d8;
+  color: #a43d00;
+}
+
+.incoming-orders-badge-confirmed {
+  background: #e4eef8;
+  color: #1d4f7a;
+}
+
+.incoming-orders-badge-preparing {
+  background: #f6ead4;
+  color: #7a4e00;
+}
+
+.incoming-orders-badge-out-for-delivery {
+  background: #dcefed;
+  color: #145c53;
+}
+
+.incoming-orders-badge-delivered {
+  background: #e8f6e8;
+  color: #1f6b2e;
+}
+
+.incoming-orders-badge-cancelled {
+  background: #f4e8e8;
+  color: #8a2f2f;
+}
+
+.incoming-orders-meta {
+  margin: 0.6rem 0 0;
+  color: #6b5e52;
+}
+
+.incoming-orders-action {
+  margin-top: 1rem;
+}
+
+.incoming-orders-waiting,
+.incoming-orders-status-text {
+  margin: 0;
+  color: #6b5e52;
+  font-weight: 600;
+}
+
+.incoming-orders-status-text {
+  text-transform: capitalize;
+}
+
+.incoming-orders-btn {
+  border: none;
+  background: #d35400;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+
+.incoming-orders-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

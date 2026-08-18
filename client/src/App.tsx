@@ -7,6 +7,9 @@ import { Dashboard } from './pages/Dashboard';
 import { RestaurantList } from './pages/RestaurantList';
 import { RestaurantDetail } from './pages/RestaurantDetail';
 import { OrderTracking } from './pages/OrderTracking';
+import { CreateRestaurant } from './pages/CreateRestaurant';
+import { ManageMenu } from './pages/ManageMenu';
+import { IncomingOrders } from './pages/IncomingOrders';
 import './App.css';
 
 /**
@@ -52,6 +55,30 @@ function App() {
               element={
                 <ProtectedRoute allowedRoles={['customer']}>
                   <OrderTracking />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/create-restaurant"
+              element={
+                <ProtectedRoute allowedRoles={['restaurant_admin']}>
+                  <CreateRestaurant />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/restaurant"
+              element={
+                <ProtectedRoute allowedRoles={['restaurant_admin']}>
+                  <ManageMenu />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/orders"
+              element={
+                <ProtectedRoute allowedRoles={['restaurant_admin']}>
+                  <IncomingOrders />
                 </ProtectedRoute>
               }
             />

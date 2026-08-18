@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import type { AuthUser } from '../types/express';
 import { verifyToken } from '../utils/jwt';
 
 /**
@@ -25,7 +26,8 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
 
   try {
     const payload = verifyToken(token);
-    req.user = { id: payload.id, role: payload.role };
+    const user: AuthUser = { id: payload.id, role: payload.role };
+    req.user = user;
     return next();
   } catch {
     // Invalid signature, malformed token, or expired — same 401 either way
